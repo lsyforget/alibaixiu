@@ -91,3 +91,36 @@ $('#modifyBox').on('change', '#avatar', function() {
         }
     })
 })
+
+//删除用户
+$('#usersList').on('click', '.delete', function() {
+    var isConfirm = confirm('确认要删除该用户吗？');
+    var id = $(this).attr('data-id');
+    if (isConfirm) {
+        $.ajax({
+            type: 'delete',
+            url: '/users/' + id,
+            success: function(res) {
+                location.reload();
+            }
+        })
+    }
+})
+
+
+//批量删除
+$('#deleteMany').on('click', function() {
+    var ids = [];
+    var deleteList = $('#usersList').find('input').filter(':checked');
+    deleteList.each(function(index, item) {
+        ids.push($(item).attr('data-id'));
+    })
+    console.log(ids.join('-'));
+    $.ajax({
+        type: 'delete',
+        url: '/users/' + ids.join('-'),
+        success: function(res) {
+            location.reload();
+        }
+    })
+})
