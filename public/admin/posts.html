@@ -32,23 +32,18 @@
             <div class="page-action">
                 <!-- show when multiple checked -->
                 <a class="btn btn-danger btn-sm" href="javascript:;" style="display: none">批量删除</a>
-                <form class="form-inline">
-                    <select name="" class="form-control input-sm">
-            <option value="">所有分类</option>
-          </select>
-                    <select name="" class="form-control input-sm">
-            <option value="">所有状态</option>
-            <option value="">草稿</option>
-            <option value="">已发布</option>
-          </select>
+                <form class="form-inline" id="selectForm">
+                    <select name="category" class="form-control input-sm" id="categoriesList">
+                    </select>
+                    <select name="state" class="form-control input-sm">
+                        <option value="">所有状态</option>
+                        <option value="0">草稿</option>
+                        <option value="1">已发布</option>
+                    </select>
                     <button class="btn btn-default btn-sm">筛选</button>
                 </form>
-                <ul class="pagination pagination-sm pull-right">
-                    <li><a href="#">上一页</a></li>
-                    <li><a href="#">1</a></li>
-                    <li><a href="#">2</a></li>
-                    <li><a href="#">3</a></li>
-                    <li><a href="#">下一页</a></li>
+                <ul class="pagination pagination-sm pull-right" id="pages">
+
                 </ul>
             </div>
             <table class="table table-striped table-bordered table-hover">
@@ -118,16 +113,31 @@
             <td class="text-center">{{$imports.dateFormat($value.createAt)}}</td>
             <td class="text-center">{{$value.state==1?'已发布':'草稿'}}</td>
             <td class="text-center">
-                <a href="javascript:;" class="btn btn-default btn-xs">编辑</a>
-                <a href="javascript:;" class="btn btn-danger btn-xs">删除</a>
+                <a href="post-add.html?id={{$value._id}}" class="btn btn-default btn-xs">编辑</a>
+                <a href="javascript:;" class="btn btn-danger btn-xs delete" data-id="{{$value._id}}">删除</a>
             </td>
         </tr>
         {{/each}}
     </script>
+    <script type="text/html" id="pageTpl">
+        {{if page>1}}
+        <li><a href="javascript:;" onclick="changePage({{page-1}})">上一页</a></li>
+        {{/if}} {{each display}}
+        <li><a href="javascript:;" onclick="changePage({{$value}})">{{$value}}</a></li>
+        {{/each}} {{if page
+        < pages}} <li><a href="javascript:;" onclick="changePage({{page-0+1}})">下一页</a></li>{{/if}}
+    </script>
+    <script type="text/html" id="categoryTpl">
+        <option value="">所有分类</option>
+        {{each categories}}
+        <option value="{{$value._id}}">{{$value.title}}</option>
+        {{/each}}
+    </script>
+    <script src="../assets/js/posts.js"></script>
     <script>
         NProgress.done()
     </script>
-    <script src="../assets/js/posts.js"></script>
+
 </body>
 
 </html>
