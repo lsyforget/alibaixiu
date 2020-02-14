@@ -40,3 +40,13 @@
          $('#deleteMany').hide();
      }
  })
+
+ //获取登录用户的信息
+ $.ajax({
+     type: 'get',
+     url: '/users/' + userId,
+     success: function(res) {
+         $('.name').text(res.nickName);
+         $('.avatar').attr('src', res.avatar)
+     }
+ })

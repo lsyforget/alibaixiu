@@ -1,3 +1,9 @@
+<script src="/login/status"></script>
+<script>
+    if (!isLogin) {
+        location.href = 'login.html';
+    }
+</script>
 <!DOCTYPE html>
 <html lang="zh-CN">
 
@@ -131,6 +137,7 @@
     <script>
         NProgress.done()
     </script>
+    <script src="../assets/js/common.js"></script>
 </body>
 
 </html>
