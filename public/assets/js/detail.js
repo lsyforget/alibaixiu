@@ -5,24 +5,7 @@ if (id != -1) {
         type: 'get',
         url: '/posts/' + id,
         success: function(res) {
-            var categoryId = res.category;
-            var authorId = res.author;
-            $.ajax({
-                async: false,
-                type: 'get',
-                url: '/categories/' + categoryId,
-                success: function(result) {
-                    res.category = result;
-                }
-            })
-            $.ajax({
-                async: false,
-                type: 'get',
-                url: '/users/' + authorId,
-                success: function(result) {
-                    res.author = result;
-                }
-            })
+
             var html = template('detailTpl', res);
 
             $('.content .article').html(html);

@@ -22,6 +22,32 @@ $.ajax({
 })
 
 //获取最新评论
+$.ajax({
+    type: 'get',
+    url: '/comments/lasted',
+    success: function(res) {
+        console.log(res);
+        var commentsTpl = `
+        {{each comment}}
+        <li>
+            <a href="javascript:;">
+                <div class="avatar">
+                    <img src="{{$value.author.avatar}}" alt="">
+                </div>
+                <div class="txt">
+                    <p>
+                        <span>{{$value.author.nickName}}</span>{{$imports.dateFormat($value.createAt)}}说:
+                    </p>
+                    <p>{{$value.content}}</p>
+                </div>
+            </a>
+        </li>
+        {{/each}}
+        `;
+        var html = template.render(commentsTpl, { comment: res });
+        $('.discuz').html(html);
+    }
+})
 
 
 //导航分类展示
@@ -71,3 +97,10 @@ $('.search form').on('submit', function() {
     location.href = 'search.html?key=' + key;
     return false;
 })
+
+//处理日期格式
+function dateFormat(date) {
+    var newDate = new Date(date);
+    return newDate.getFullYear() + '-' + (newDate.getMonth() + 1) + '-' + newDate.getDate();
+}
+template.defaults.imports.dateFormat = dateFormat;

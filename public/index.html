@@ -49,84 +49,7 @@
             <div class="widgets">
                 <h4>最新评论</h4>
                 <ul class="body discuz">
-                    <li>
-                        <a href="javascript:;">
-                            <div class="avatar">
-                                <img src="uploads/avatar_1.jpg" alt="">
-                            </div>
-                            <div class="txt">
-                                <p>
-                                    <span>鲜活</span>2020-02-01说:
-                                </p>
-                                <p>挺会玩的</p>
-                            </div>
-                        </a>
-                    </li>
-                    <li>
-                        <a href="javascript:;">
-                            <div class="avatar">
-                                <img src="uploads/avatar_1.jpg" alt="">
-                            </div>
-                            <div class="txt">
-                                <p>
-                                    <span>鲜活</span>2020-02-01说:
-                                </p>
-                                <p>挺会玩的</p>
-                            </div>
-                        </a>
-                    </li>
-                    <li>
-                        <a href="javascript:;">
-                            <div class="avatar">
-                                <img src="uploads/avatar_2.jpg" alt="">
-                            </div>
-                            <div class="txt">
-                                <p>
-                                    <span>鲜活</span>2020-02-01说:
-                                </p>
-                                <p>挺会玩的</p>
-                            </div>
-                        </a>
-                    </li>
-                    <li>
-                        <a href="javascript:;">
-                            <div class="avatar">
-                                <img src="uploads/avatar_1.jpg" alt="">
-                            </div>
-                            <div class="txt">
-                                <p>
-                                    <span>鲜活</span>2020-02-01说:
-                                </p>
-                                <p>挺会玩的</p>
-                            </div>
-                        </a>
-                    </li>
-                    <li>
-                        <a href="javascript:;">
-                            <div class="avatar">
-                                <img src="uploads/avatar_2.jpg" alt="">
-                            </div>
-                            <div class="txt">
-                                <p>
-                                    <span>鲜活</span>2020-02-01说:
-                                </p>
-                                <p>挺会玩的</p>
-                            </div>
-                        </a>
-                    </li>
-                    <li>
-                        <a href="javascript:;">
-                            <div class="avatar">
-                                <img src="uploads/avatar_1.jpg" alt="">
-                            </div>
-                            <div class="txt">
-                                <p>
-                                    <span>鲜活</span>2020-02-01说:
-                                </p>
-                                <p>挺会玩的</p>
-                            </div>
-                        </a>
-                    </li>
+
                 </ul>
             </div>
         </div>
@@ -172,7 +95,7 @@
         {{/each}}
     </script>
     <script type="text/html" id="lastedTpl">
-        {{each lasted}}
+        //最新文章 {{each lasted}}
         <div class="entry">
             <div class="head">
                 <span class="sort">{{$value.category.title}}</span>
@@ -191,8 +114,8 @@
                         <span>赞({{$value.meta.likes}})</span>
                     </a>
                     <a href="list.html?id={{$value.category._id}}" class="tags">
-            分类：<span>{{$value.category.title}}</span>
-          </a>
+                        分类：<span>{{$value.category.title}}</span>
+                    </a>
                 </p>
                 <a href="detail.html?id={{$value._id}}" class="thumb">
                     <img src="{{$value.thumbnail}}" alt="">
